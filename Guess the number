@@ -1,0 +1,46 @@
+import java.util.*;
+import java.lang.Math;
+ class ROCK{
+int count = 0;
+int MaxScore=40;
+int A = (int)(Math.random() * (300 - 200 + 1));   
+void Guessnum() {
+    do {
+        System.out.println("enter your number");
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+	
+        if (num == A) {
+            System.out.println("your number is correct" +  A);
+        } else {
+            System.out.println("your number is incorrect Try again....");
+            count = count + 1;
+            System.out.println("Enter the again");
+
+        }
+    } while (count <3);
+ System.out.println("you have attempt this many times");
+ System.out.println(count);
+ if (count==1){
+             System.out.println("your Score is "+ (MaxScore));
+		 System.out.println("intelligent");
+         }
+         else if(count==2){
+             System.out.println("your Score is "+ (MaxScore-20));
+     		 System.out.println("average");
+         }
+         else if(count==3){
+             System.out.println("your Score is "+ (MaxScore-40));
+		System.out.println("poor");
+	
+         }
+
+System.out.println("Gussing  number is\t" +  A);	
+}
+}
+public class guess_the_number {
+    public static void main(String[] args) {
+ROCK gj = new ROCK();
+gj.Guessnum();
+    }
+}
