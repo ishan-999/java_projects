@@ -1,0 +1,134 @@
+import java.util.Scanner;
+class ABC{
+    int count ;
+    int option;
+    int Amount;
+    ABC(){
+        count=0;
+        Amount=1000;
+    }
+    Scanner sc = new Scanner(System.in);
+    void sw(){
+        do {
+            System.out.println("MENU");
+            System.out.println("1.\tTransaction History\n2.\tWithdraw\n3.\tDeposit\n4.\tTramsfer\n5.\tQuit");
+            System.out.println("choose your option");
+            option = sc.nextInt();
+            switch (option) {
+                case 1:
+                    System.out.println("your Transction History is");
+                    System.out.println(Amount);
+                case 2:
+                    int withdrawal;
+                    System.out.println("Withdrawal");
+                    System.out.println("Enter the Amount you withdrawal");
+                    withdrawal = sc.nextInt();
+                    Amount = Amount - withdrawal;
+                    System.out.println("your balance left" + Amount);
+                    try {
+                        if (withdrawal < 100 || Amount  <1000){
+			      throw new Exception();
+                           
+}
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                    break;
+                case 3:
+                    try {
+                        int deposit;
+                        System.out.println("Deposit The Amount ");
+                        deposit = sc.nextInt();
+                        Amount = Amount + deposit;
+                        System.out.println("your balance After deposit the money is\t" + Amount);
+                    }
+                    catch (NumberFormatException ED) {
+                        System.out.println(ED);
+                    }
+                    break;
+                case 4:
+                    int Transfer;
+                    System.out.println("Transfer The Amount ");
+                    Transfer = sc.nextInt();
+                    Amount = Amount - Transfer;
+                    System.out.println("new Ammount After transfer is\t " + Amount);
+
+                    try {
+                        if (Amount < 500) ;
+throw new Exception();
+                       // System.out.println("LOw Balance");
+                    } catch (Exception A) {
+                        System.out.println(A);
+                    }
+                    break;
+                case 5:
+                    System.out.println("DO YOU WANNA QUIT");
+                    int Decide;
+                    System.out.println("1-yesss \n 2- No");
+                    Decide = sc.nextInt();
+                    try {
+                        switch (Decide) {
+                            case 1:
+                                System.exit(0);
+                                break;
+                            case 2:
+                                System.out.println("You press Quit opition ");
+                                System.out.println("you are out of our Atm");
+                                System.exit(0);
+                        }
+                    }
+                catch(NumberFormatException EQ){
+                            System.out.println(EQ);
+                        }
+                        break;
+
+            }
+        }while (option!=6);
+    }
+}
+class Atm extends ABC{
+    String card_No,Pincode;
+    int button;
+    Scanner sc= new Scanner(System.in);
+    void display(){
+        System.out.println("WELCOME TO THE ATM ");
+        try{
+    
+            System.out.println("Enter your card_no");
+            card_No = sc.next();
+            System.out.println("Enter your pincode");
+            Pincode = sc.next();
+   if((card_No.length()==12) && (Pincode.length()==4)){
+throw new Exception();
+}
+                   }
+        catch (NumberFormatException Ex){
+            System.out.println(Ex);
+        }
+        catch (Exception AE){
+            System.out.println(AE);
+		System.exit(0);
+       }
+        System.out.println("THREE BUTTONS \n 1-SIGN-IN \t\t 2-CLEAR ALL\n\t\t 3-SIGN-UP");
+        button= sc.nextInt();
+        switch(button){
+            case 1:
+                        sw();
+            case 2:
+                System.out.println("Clear all");
+                break;
+            case 3:
+                System.out.println("signup");
+                break;
+            default:
+                System.exit(0);
+        }
+    }
+}
+public class aatm {
+    public static void main(String[] args) {
+        Atm At = new Atm();
+        At.display();
+
+    }
+}
